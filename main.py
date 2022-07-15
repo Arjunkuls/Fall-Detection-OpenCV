@@ -33,9 +33,17 @@ while(True):
             cx, cy = int(lm.x*w), int(lm.y * h)
             lms.append((cx, cy))
         positions.append(lms)
-        with open('vals.txt', 'a') as f:
+
+        # Write Coordinates of left ear to file
+        with open('leftEar.txt', 'a') as f:
             f.write(str(positions[counter][7]))
             f.write("\n")
+
+        # Write Coordinates of right ear to file
+        with open('rightEar.txt', 'a') as f:
+            f.write(str(positions[counter][8]))
+            f.write("\n")
+
         counter+=1
   
     # Calculate FPS
