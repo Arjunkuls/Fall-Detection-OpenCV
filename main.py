@@ -12,7 +12,12 @@ pose = mppose.Pose()
 time_passed = 0
 start_time = time.time()
 
+# Each frame is an array
+# Inside that array there are tuples (constant arrays basically)
+# Each tuple is a (x, y) coordinate
 positions = []
+
+# Counter for how many frames have been processed
 counter = 0
 # cap = cv2.VideoCapture(0)
 cap = cv2.VideoCapture("yeet.mp4")
@@ -58,12 +63,13 @@ while(True):
 
     # Time Logic
     time_passed = int((time.time() - start_time)*100)
-    # Trigger every 5 seconds
+
+    left_pure_diff = 0
+    # Trigger every 5 1/100 seconds
     if time_passed % 5 == 0:
-        # Write time:FPS to file
-        with open('time.txt', 'a') as f:
-            f.write(str(time_passed) + ":" + str(fps))
-            f.write("\n")
+        # Left Leg coordinate - left ear coordinate
+        left_pure_diff = positions[counter-1][27][1] - positions[counter-1][7][1]
+        print(left_pure_diff)
 
     
 
